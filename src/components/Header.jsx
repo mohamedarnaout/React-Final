@@ -12,15 +12,15 @@ import { Box, HStack } from "@chakra-ui/react";
 const socials = [
   {
     icon: faEnvelope,
-    url: "mailto: hello@example.com",
+    url: "mailto: mohamedearna@gmail.com",
   },
   {
     icon: faGithub,
-    url: "https://github.com",
+    url: "https://github.com/mohamedarnaout",
   },
   {
     icon: faLinkedin,
-    url: "https://www.linkedin.com",
+    url: "https://www.linkedin.com/in/mohamed-arnaout-b409a1191/",
   },
   {
     icon: faMedium,
@@ -36,6 +36,8 @@ const Header = () => {
   const handleClick = (anchor) => () => {
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
+    console.log(id);
+    console.log(element);
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",
@@ -43,7 +45,8 @@ const Header = () => {
       });
     }
   };
-
+  const anchor1 = "contactme";
+  const anchor2 = "projects";
   return (
     <Box
       position="fixed"
@@ -64,11 +67,22 @@ const Header = () => {
           alignItems="center"
         >
           <nav>
-            {/* Add social media links based on the `socials` data */}
+            <HStack spacing={8}>
+              {socials.map((social) => (
+                <a href={social.url}>
+                  <FontAwesomeIcon icon={social.icon} size="2x" />
+                </a>
+              ))}
+            </HStack>
           </nav>
           <nav>
             <HStack spacing={8}>
-              {/* Add links to Projects and Contact me section */}
+              <a style={{ cursor: "pointer" }} onClick={handleClick(anchor1)}>
+                Contact Me
+              </a>
+              <a style={{ cursor: "pointer" }} onClick={handleClick(anchor2)}>
+                Projects
+              </a>
             </HStack>
           </nav>
         </HStack>
